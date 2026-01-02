@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HiTheme | Premium Sneaker Experience</title>
+    <title>MobiFix | Professional Mobile Repair & Service</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -19,6 +19,27 @@
             color: white; 
             overflow-x: hidden; 
             scroll-behavior: smooth;
+        }
+
+        /* Generic Section Heading Style */
+        .section-title-box {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-title-box .subtitle {
+            color: #FF4D00;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .section-title-box h2 {
+            font-family: 'Orbitron';
+            font-size: clamp(28px, 4vw, 42px);
+            font-weight: 800;
+            color: inherit;
         }
 
         /* --- HEADER NAVIGATION --- */
@@ -44,7 +65,7 @@
         nav ul li a:hover { color: #FF4D00; }
 
         .nav-right { display: flex; align-items: center; gap: 20px; font-size: 18px; }
-        .menu-toggle { display: none; cursor: pointer; z-index: 1001; }
+        .menu-toggle { display: none; cursor: pointer; z-index: 1002; }
 
         /* --- HERO SLIDER SPLIT EFFECT --- */
         .swiper { width: 100%; height: 100vh; }
@@ -121,7 +142,7 @@
         .swiper-pagination-bullet-active { background: #FF4D00 !important; width: 60px !important; }
 
         /* --- BRAND SCROLLER --- */
-        .brand-section { background: #fff; padding: 40px 0; overflow: hidden; }
+        .brand-section { background: #fff; padding: 80px 0 40px; overflow: hidden; }
         .brand-track {
             display: flex; width: calc(250px * 14);
             animation: scroll 30s linear infinite; align-items: center;
@@ -133,6 +154,84 @@
         .brand-item:hover { color: #FF4D00; }
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-250px * 7)); } }
 
+        /* --- PRODUCT SECTION --- */
+        .product-section {
+            padding: 100px 6%;
+            background-color: #ffffff;
+            color: #1a1a1a;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .product-card {
+            background: #fff;
+            border: 1px solid #f0f0f0;
+            border-radius: 12px;
+            padding: 15px;
+            transition: 0.3s;
+        }
+        .product-card:hover { box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        
+        .product-img-box {
+            width: 100%;
+            height: 300px;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        .product-img-box img {
+            max-width: 80%;
+            max-height: 80%;
+            object-fit: contain;
+            transition: 0.5s;
+        }
+        .product-card:hover .product-img-box img { transform: scale(1.1); }
+
+        .wishlist-btn {
+            position: absolute;
+            top: 15px; right: 15px;
+            width: 40px; height: 40px;
+            background: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            color: #666;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .wishlist-btn:hover { color: #FF4D00; }
+        
+        .discount-badge {
+            position: absolute;
+            bottom: 15px; left: 15px;
+            background: #ffc107;
+            color: #1a1a1a;
+            padding: 5px 12px;
+            font-weight: 700;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .product-info .category { color: #888; font-size: 14px; margin-bottom: 8px; display: block; }
+        .product-info h4 { font-size: 20px; font-weight: 800; color: #0c1c3a; margin-bottom: 10px; }
+        
+        .rating { color: #ffc107; font-size: 14px; margin-bottom: 10px; display: flex; align-items: center; gap: 5px; }
+        .rating span { color: #888; font-weight: 400; }
+
+        .price-box { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 22px; color: #0c1c3a; }
+        .price-box .old-price { text-decoration: line-through; color: #ccc; font-weight: 400; font-size: 18px; }
+
         /* --- OUR PROCESS SECTION --- */
         .process-section {
             padding: 100px 6%;
@@ -142,8 +241,6 @@
             background-size: 50px 50px;
             color: #333;
         }
-        .section-intro { text-align: center; margin-bottom: 80px; }
-        .section-intro h2 { font-family: 'Orbitron'; color: #FF4D00; font-size: 32px; margin-bottom: 10px; }
 
         .process-grid {
             display: grid;
@@ -186,10 +283,9 @@
 
         /* --- CONTACT SECTION STYLES --- */
         .contact-section {
-            padding: 80px 6%;
+            padding: 100px 6%;
             background-color: #f0f4f8;
-            display: flex;
-            justify-content: center;
+            color: #1a1a1a;
         }
 
         .contact-container {
@@ -197,7 +293,7 @@
             grid-template-columns: 1fr 1.5fr;
             gap: 30px;
             max-width: 1200px;
-            width: 100%;
+            margin: 0 auto;
         }
 
         .contact-info-wrapper {
@@ -279,7 +375,7 @@
         }
         .submit-btn:hover { background: #0056b3; }
 
-        /* --- ABOUT RECRUTE SECTION & HOVER EFFECT --- */
+        /* --- ABOUT RECRUTE SECTION --- */
         .recrute-section {
             padding: 100px 6%;
             background-color: white;
@@ -314,10 +410,7 @@
             cursor: pointer;
         }
 
-        /* Hover expands to show full size / larger space */
-        .recrute-img-box:hover {
-            flex: 3;
-        }
+        .recrute-img-box:hover { flex: 3; }
 
         .recrute-img-box img {
             width: 100%;
@@ -326,10 +419,7 @@
             display: block;
         }
 
-        .recrute-content {
-            flex: 1.2;
-            min-width: 300px;
-        }
+        .recrute-content { flex: 1.2; min-width: 300px; }
 
         .recrute-badge {
             background: #fff0eb;
@@ -358,12 +448,7 @@
             font-size: 16px;
         }
 
-        .stats-grid {
-            display: flex;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
+        .stats-grid { display: flex; gap: 40px; margin-bottom: 40px; }
         .stat-item h3 { font-size: 32px; font-weight: 800; margin-bottom: 5px; }
         .stat-item span { color: #6a7181; font-size: 14px; }
 
@@ -406,55 +491,13 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.15);
         }
 
-        /* --- MOBILE RESPONSIVE --- */
-        @media (max-width: 992px) {
-            .menu-toggle { display: block; }
-            nav {
-                position: fixed; top: 0; right: -100%; width: 80%; height: 100vh;
-                background: #000; display: flex; flex-direction: column;
-                justify-content: center; align-items: center; transition: 0.5s;
-                z-index: 1001;
-            }
-            nav.active { right: 0; }
-            nav ul { flex-direction: column; gap: 35px; }
-            .swiper-button-next, .swiper-button-prev { display: none; }
-            .process-section { padding: 60px 5%; }
-            .stagger-down, .stagger-up { transform: none; }
-            
-            .contact-container { grid-template-columns: 1fr; }
-            .form-grid { grid-template-columns: 1fr; }
-            .full-width { grid-column: span 1; }
-
-            .recrute-images { height: auto; flex-direction: column; }
-            .recrute-img-box { height: 200px; flex: none; width: 100%; }
-            .recrute-img-box:hover { flex: none; transform: scale(1.02); }
-            .stats-grid { flex-wrap: wrap; gap: 20px; }
-        }
-
         /* --- QUICK AND EASY SECTION STYLES --- */
         .quick-easy-section {
-            padding: 80px 6%;
+            padding: 100px 6%;
             background-color: #ffffff;
             color: #000000;
             text-align: center;
             font-family: 'Inter', sans-serif;
-        }
-
-        .quick-easy-section .section-header { margin-bottom: 60px; }
-        .quick-easy-section .subtitle {
-            color: #4CAF50;
-            font-weight: 700;
-            text-transform: uppercase;
-            font-size: 14px;
-            letter-spacing: 1.5px;
-            display: block;
-        }
-
-        .quick-easy-section h2 {
-            font-size: 48px;
-            font-weight: 800;
-            margin-top: 10px;
-            color: #000;
         }
 
         .steps-container {
@@ -495,9 +538,9 @@
             .step-item { margin-bottom: 40px; }
         }
 
-        /* --- FOOTER SECTION (NEW) --- */
+        /* --- FOOTER SECTION --- */
         footer {
-            background: linear-gradient(rgba(10, 20, 30, 0.95), rgba(10, 20, 30, 0.95)), url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=2000');
+            background: linear-gradient(rgba(10, 20, 30, 0.95), rgba(10, 20, 30, 0.95)), url('https://images.unsplash.com/photo-1512428559087-560fa5ceab42?q=80&w=2000');
             background-size: cover;
             background-position: center;
             padding: 120px 6% 40px;
@@ -511,7 +554,6 @@
             display: grid;
             grid-template-columns: 1.2fr 0.8fr 1fr 1fr;
             gap: 40px;
-        
         }
 
         .footer-logo-col .footer-logo {
@@ -525,19 +567,9 @@
         }
         .footer-logo i { color: #2ecc71; font-size: 24px; }
 
-        .footer-logo-col p {
-            font-size: 15px;
-            line-height: 1.8;
-            opacity: 0.8;
-            margin-bottom: 20px;
-        }
+        .footer-logo-col p { font-size: 15px; line-height: 1.8; opacity: 0.8; margin-bottom: 20px; }
 
-        .footer-col h4 {
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 25px;
-            position: relative;
-        }
+        .footer-col h4 { font-size: 18px; font-weight: 700; margin-bottom: 25px; position: relative; }
 
         .footer-links { list-style: none; }
         .footer-links li { margin-bottom: 12px; }
@@ -550,23 +582,10 @@
         }
         .footer-links li a:hover { opacity: 1; color: #2ecc71; padding-left: 5px; }
 
-        .footer-col p.time-row {
-            font-size: 14px;
-            margin-bottom: 10px;
-            opacity: 0.8;
-        }
+        .footer-col p.time-row { font-size: 14px; margin-bottom: 10px; opacity: 0.8; }
 
-        .footer-contact-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        .footer-contact-item i {
-            color: #2ecc71;
-            font-size: 18px;
-            margin-top: 4px;
-        }
+        .footer-contact-item { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 20px; }
+        .footer-contact-item i { color: #2ecc71; font-size: 18px; margin-top: 4px; }
         .footer-contact-item h5 { font-size: 18px; font-weight: 700; margin-bottom: 2px; }
         .footer-contact-item p { font-size: 14px; opacity: 0.8; }
         .footer-contact-item.phone h5 { font-size: 22px; color: #2ecc71; }
@@ -596,157 +615,145 @@
             cursor: pointer;
         }
 
+        /* --- TESTIMONIAL SECTION WITH DOTTED WORLD MAP --- */
+        .testimonial-section {
+            background-color: #f9fafb;
+            padding: 120px 10%;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            position: relative; 
+        }
+
+        .testimonial-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/b/bc/World_Map_Dots.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 80%; 
+            opacity: 0.1; 
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .testimonial-content { flex: 1; position: relative; z-index: 2; }
+
+        .testimonial-content h2 {
+            font-size: 2.8rem;
+            color: #111;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            font-weight: 800;
+        }
+
+        .testimonial-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+
+        .btn-contact {
+            background: linear-gradient(90deg, #86efac, #d9f99d);
+            padding: 14px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #111;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+        .btn-contact:hover { transform: scale(1.05); }
+
+        .testimonial-grid {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            height: 600px; 
+            overflow: hidden;
+            position: relative;
+            z-index: 2;
+            mask-image: linear-gradient(transparent, black 15%, black 85%, transparent);
+        }
+
+        .testimonial-column { display: flex; flex-direction: column; gap: 20px; }
+
+        .scroll-down { animation: topToBottom 25s linear infinite; }
+        @keyframes topToBottom { 0% { transform: translateY(-50%); } 100% { transform: translateY(0); } }
+
+        .scroll-up { animation: bottomToTop 25s linear infinite; }
+        @keyframes bottomToTop { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
+
+        .testimonial-grid:hover .testimonial-column { animation-play-state: paused; }
+
+        .card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            border: 1px solid #f1f1f1;
+        }
+
+        .quote-icon { font-size: 30px; color: #111; display: block; margin-bottom: 10px; }
+        .card-text { font-size: 0.95rem; color: #444; line-height: 1.6; margin-bottom: 20px; }
+        .user-profile { display: flex; align-items: center; gap: 12px; }
+        .user-profile img { width: 45px; height: 45px; border-radius: 50%; object-fit: cover; }
+        .user-info h4 { margin: 0; font-size: 0.9rem; color: #111; }
+        .user-info span { font-size: 0.8rem; color: #888; }
+
+        /* --- MOBILE RESPONSIVE FIX --- */
         @media (max-width: 992px) {
-            .footer-container { grid-template-columns: 1fr 1fr; }
+            .menu-toggle { display: block; }
+            nav {
+                position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
+                background: rgba(0, 0, 0, 0.95); display: flex; flex-direction: column;
+                justify-content: center; align-items: center; transition: 0.5s ease-in-out;
+                z-index: 1001; visibility: hidden; opacity: 0;
+            }
+            nav.active { right: 0; visibility: visible; opacity: 1; }
+            nav ul { flex-direction: column; gap: 30px; text-align: center; }
+            nav ul li a { font-size: 24px; }
+            
+            .testimonial-section { flex-direction: column; text-align: center; padding: 60px 6%; }
+            .testimonial-grid { width: 100%; height: 400px; }
+
+            .swiper-button-next, .swiper-button-prev { display: none; }
+            .process-section { padding: 60px 5%; }
+            .stagger-down, .stagger-up { transform: none; }
+            
+            .contact-container { grid-template-columns: 1fr; }
+            .form-grid { grid-template-columns: 1fr; }
+            .full-width { grid-column: span 1; }
+
+            .recrute-images { height: auto; flex-direction: column; }
+            .recrute-img-box { height: 200px; flex: none; width: 100%; }
+            .recrute-img-box:hover { flex: none; transform: scale(1.02); }
+            .stats-grid { flex-wrap: wrap; gap: 20px; }
         }
-        @media (max-width: 600px) {
-            .footer-container { grid-template-columns: 1fr; text-align: center; }
-            .footer-contact-item { justify-content: center; }
-        }
-
-        /* Container Layout */
-.testimonial-section {
-    background-color: #f9fafb;
-    padding: 80px 10%;
-    display: flex;
-    align-items: center;
-    gap: 50px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    overflow: hidden;
-}
-
-.testimonial-content {
-    flex: 1;
-}
-
-.testimonial-content h2 {
-    font-size: 2.5rem;
-    color: #111;
-    margin-bottom: 20px;
-    line-height: 1.2;
-}
-
-.testimonial-content p {
-    color: #666;
-    line-height: 1.6;
-    margin-bottom: 30px;
-}
-
-.btn-contact {
-    background: linear-gradient(90deg, #86efac, #d9f99d);
-    padding: 14px 28px;
-    border-radius: 8px;
-    text-decoration: none;
-    color: #111;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-}
-
-/* Scroll Grid Logic */
-.testimonial-grid {
-    flex: 1;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    height: 600px; 
-    overflow: hidden;
-    position: relative;
-    mask-image: linear-gradient(transparent, black 15%, black 85%, transparent);
-}
-
-.testimonial-column {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-/* ANIMATION 1: Top to Bottom (Scroll Down) */
-.scroll-down {
-    animation: topToBottom 25s linear infinite;
-}
-
-@keyframes topToBottom {
-    0% { transform: translateY(-50%); }
-    100% { transform: translateY(0); }
-}
-
-/* ANIMATION 2: Bottom to Top (Scroll Up) */
-.scroll-up {
-    animation: bottomToTop 25s linear infinite;
-}
-
-@keyframes bottomToTop {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(-50%); }
-}
-
-/* Pause on hover for better UX */
-.testimonial-grid:hover .testimonial-column {
-    animation-play-state: paused;
-}
-
-/* Card Visual Styles */
-.card {
-    background: #ffffff;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-    border: 1px solid #f1f1f1;
-}
-
-.quote-icon {
-    font-size: 30px;
-    color: #111;
-    display: block;
-    margin-bottom: 10px;
-}
-
-.card-text {
-    font-size: 0.95rem;
-    color: #444;
-    line-height: 1.6;
-    margin-bottom: 20px;
-}
-
-.user-profile {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.user-profile img {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
-.user-info h4 {
-    margin: 0;
-    font-size: 0.9rem;
-    color: #111;
-}
-
-.user-info span {
-    font-size: 0.8rem;
-    color: #888;
-}
 
     </style>
 </head>
 <body>
 
     <header id="top">
-        <div class="logo"><span>HI</span><span>Theme</span></div>
+        <div class="logo"><span>MOBI</span><span>Fix</span></div>
         <nav id="navbar">
             <ul>
                 <li><a href="#top">Home</a></li>
-                <li><a href="#">Shop</a></li>
-                <li><a href="#">Promotion</a></li>
+                <li><a href="#">Repairs</a></li>
                 <li><a href="#">Accessories</a></li>
-                <li><a href="#">Blog</a></li>
+                <li><a href="#">Buy/Sell</a></li>
+                <li><a href="#">Tech Blog</a></li>
             </ul>
         </nav>
         <div class="nav-right">
@@ -755,24 +762,25 @@
         </div>
     </header>
 
+    <!-- HERO SECTION -->
     <div class="swiper mySwiper">
         <div class="swiper-wrapper">
             <div class="swiper-slide">
-                <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1552346154-21d32810aba3?q=80&w=2000');" data-swiper-parallax="50%"></div>
+                <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1597740985671-2a8a3b80502e?q=80&w=2000');" data-swiper-parallax="50%"></div>
                 <div class="hero-content">
-                    <h3>Summer Edition</h3>
-                    <h2>Sneakers of</h2>
-                    <h1>The Week</h1>
-                    <a href="#" class="cta-button">View Collection</a>
+                    <h3>Expert Technicians</h3>
+                    <h2>Fast Screen</h2>
+                    <h1>Repairs</h1>
+                    <a href="#" class="cta-button">Book a Repair</a>
                 </div>
             </div>
             <div class="swiper-slide">
-                <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?q=80&w=2000');" data-swiper-parallax="50%"></div>
+                <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1605152276897-4f618f831968?q=80&w=2000');" data-swiper-parallax="50%"></div>
                 <div class="hero-content">
-                    <h3>Urban Tech</h3>
-                    <h2>New Arrivals</h2>
-                    <h1>Streetwear</h1>
-                    <a href="#" class="cta-button">Shop Now</a>
+                    <h3>Premium Gear</h3>
+                    <h2>Certified Official</h2>
+                    <h1>Accessories</h1>
+                    <a href="#" class="cta-button">Shop Gear</a>
                 </div>
             </div>
         </div>
@@ -781,65 +789,67 @@
         <div class="swiper-pagination"></div>
     </div>
 
+    <!-- ABOUT SECTION -->
     <section class="recrute-section">
         <div class="recrute-container">
             <div class="recrute-images">
-                <div class="recrute-img-box"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800" alt="Finance Professional"></div>
-                <div class="recrute-img-box"><img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=800" alt="Business Meeting"></div>
-                <div class="recrute-img-box"><img src="https://images.unsplash.com/photo-1540966466591-6458139cf13f?q=80&w=800" alt="Delivery Logistics"></div>
+                <div class="recrute-img-box"><img src="https://images.unsplash.com/photo-1612444530582-fc66183b16f7?q=80&w=800" alt="Repairing iPhone"></div>
+                <div class="recrute-img-box"><img src="https://images.unsplash.com/photo-1556656793-062ff9878273?q=80&w=800" alt="Phone Display"></div>
+                <div class="recrute-img-box"><img src="https://images.unsplash.com/photo-1548092372-0d1bd40894a3?q=80&w=800" alt="Technician Workspace"></div>
             </div>
             
             <div class="recrute-content">
                 <div class="recrute-badge">
-                    <i class="fa-solid fa-house-laptop"></i> ABOUT RECRUTE
+                    <i class="fa-solid fa-microchip"></i> ABOUT MOBIFIX
                 </div>
-                <h2>Driving Success With A Expert Finance Staffing</h2>
-                <p>Our team of industry experts is dedicated to understanding your unique needs and delivering tailored solutions that propel your business forward.</p>
+                <h2>Expert Solutions For All Your Mobile Tech Needs</h2>
+                <p>Our team of certified technicians is dedicated to restoring your devices to factory perfection. We use only high-quality parts to ensure your peace of mind.</p>
                 
                 <div class="stats-grid">
                     <div class="stat-item">
-                        <h3>1K+</h3>
-                        <span>Expert Team</span>
-                    </div>
-                    <div class="stat-item">
-                        <h3>98%</h3>
-                        <span>Client Satisfaction</span>
+                        <h3>5K+</h3>
+                        <span>Phones Repaired</span>
                     </div>
                     <div class="stat-item">
                         <h3>99%</h3>
-                        <span>Success Rate</span>
+                        <span>Client Satisfaction</span>
+                    </div>
+                    <div class="stat-item">
+                        <h3>1HR</h3>
+                        <span>Avg Repair Time</span>
                     </div>
                 </div>
                 
-                <a href="#" class="network-btn">JOIN OUR NETWORK <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="#" class="network-btn">GET A FREE QUOTE <i class="fa-solid fa-arrow-right"></i></a>
             </div>
         </div>
     </section>
 
+    <!-- QUICK & EASY SECTION -->
     <section class="quick-easy-section">
-        <div class="section-header">
-            <span class="subtitle">HOW IT WORKS</span>
-            <h2>Quick and Easy</h2>
+        <div class="section-title-box" style="color:#000;">
+            <span class="subtitle" style="color:#4CAF50;">HOW WE WORK</span>
+            <h2>Quick and Easy Repair</h2>
         </div>
         <div class="steps-container">
             <div class="step-item">
                 <div class="step-circle">
-                    <i class="fa-regular fa-calendar-check"></i>
-                    <div class="leaf-decor"><i class="fa-solid fa-leaf"></i></div>
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                    <div class="leaf-decor"><i class="fa-solid fa-bolt"></i></div>
                 </div>
-                <h4>Free Quote</h4>
-                <p>Tell us about your home and choose the date you want.</p>
+                <h4>Diagnosis</h4>
+                <p>Bring your device or book online for a free initial inspection.</p>
             </div>
 
             <div class="step-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
 
             <div class="step-item">
                 <div class="step-circle">
-                    <i class="fa-solid fa-hand-sparkles"></i>
-                    <div class="leaf-decor"><i class="fa-solid fa-leaf"></i></div>
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                    <div class="leaf-decor"><i class="fa-solid fa-bolt"></i></div>
                 </div>
-                <h4>Clean</h4>
-                <p>Our seasoned team of full-time cleaners will transform your home.</p>
+                <h4>Fixing</h4>
+                <p>Our experts perform the repair using premium components immediately.</p>
             </div>
 
             <div class="step-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
@@ -847,149 +857,219 @@
             <div class="step-item">
                 <div class="step-circle">
                     <i class="fa-regular fa-face-smile-beam"></i>
-                    <div class="leaf-decor"><i class="fa-solid fa-leaf"></i></div>
+                    <div class="leaf-decor"><i class="fa-solid fa-bolt"></i></div>
                 </div>
-                <h4>Relax</h4>
-                <p>Sit back and enjoy how amazing your home or business looks now.</p>
+                <h4>Enjoy</h4>
+                <p>Collect your good-as-new device with our comprehensive warranty.</p>
             </div>
         </div>
     </section>
 
+    <!-- PROCESS SECTION -->
     <section class="process-section">
-        <div class="section-intro">
-            <h2>Our Process</h2>
-            <p>We've been working hard to impress you.</p>
+        <div class="section-title-box" style="color:#333;">
+            <span class="subtitle">OUR REPAIR STANDARDS</span>
+            <h2>The MobiFix Way</h2>
         </div>
         <div class="process-grid">
             <div class="process-card stagger-up">
-                <img src="https://images.unsplash.com/photo-1542621334-a254cf47733d?q=80&w=800" class="card-img" alt="Consultation">
-                <h4><span>01.</span> Initial Consultation</h4>
-                <p>We begin by understanding your vision, goals, and needs, followed by a roadmap.</p>
+                <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=800" class="card-img" alt="Free Diagnosis">
+                <h4><span>01.</span> Free Diagnosis</h4>
+                <p>We check everything from battery health to logic board issues at no cost.</p>
                 <div class="watermark">01</div>
             </div>
             <div class="process-card stagger-down">
-                <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=800" class="card-img" alt="Design">
-                <h4><span>02.</span> Design & Planning</h4>
-                <p>Our team creates detailed designs that reflect your specific requirements and style.</p>
+                <img src="https://images.unsplash.com/photo-1550009158-9ebf69173e03?q=80&w=800" class="card-img" alt="Genuine Parts">
+                <h4><span>02.</span> Premium Parts</h4>
+                <p>We source only original or high-tier certified components for every fix.</p>
                 <div class="watermark">02</div>
             </div>
             <div class="process-card stagger-up">
-                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800" class="card-img" alt="Implementation">
-                <h4><span>03.</span> Implementation</h4>
-                <p>With carefully selected contractors, we manage every phase of the project with precision.</p>
+                <img src="https://images.unsplash.com/photo-1544197150-b99a580bb7a8?q=80&w=800" class="card-img" alt="Testing">
+                <h4><span>03.</span> Quality Testing</h4>
+                <p>Every device undergoes a 20-point functionality check before handover.</p>
                 <div class="watermark">03</div>
             </div>
             <div class="process-card stagger-down">
-                <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=800" class="card-img" alt="Handover">
-                <h4><span>04.</span> Project Handover</h4>
-                <p>Upon completion, we conduct a thorough review, making sure every detail is flawless.</p>
+                <img src="https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?q=80&w=800" class="card-img" alt="Warranty">
+                <h4><span>04.</span> Warranty Protect</h4>
+                <p>We provide up to 12 months warranty on all our hardware repairs.</p>
                 <div class="watermark">04</div>
             </div>
         </div>
     </section>
 
+    <!-- BRAND SECTION -->
     <section class="brand-section">
+        <div class="section-title-box" style="color:#1a1a1a;">
+            <span class="subtitle">DEVICES WE SERVICE</span>
+            <h2>Supported Brands</h2>
+        </div>
         <div class="brand-track">
-            <div class="brand-item"><i class="fab fa-nike"></i><span>NIKE</span></div>
-            <div class="brand-item"><i class="fab fa-adidas"></i><span>ADIDAS</span></div>
-            <div class="brand-item"><span>PUMA</span></div>
-            <div class="brand-item"><span>REEBOK</span></div>
-            <div class="brand-item"><span>ASICS</span></div>
-            <div class="brand-item"><span>JORDAN</span></div>
-            <div class="brand-item"><span>VANS</span></div>
-            <div class="brand-item"><i class="fab fa-nike"></i><span>NIKE</span></div>
-            <div class="brand-item"><i class="fab fa-adidas"></i><span>ADIDAS</span></div>
-            <div class="brand-item"><span>PUMA</span></div>
-            <div class="brand-item"><span>REEBOK</span></div>
-            <div class="brand-item"><span>ASICS</span></div>
-            <div class="brand-item"><span>JORDAN</span></div>
-            <div class="brand-item"><span>VANS</span></div>
+            <div class="brand-item"><i class="fab fa-apple"></i><span>APPLE</span></div>
+            <div class="brand-item"><span>SAMSUNG</span></div>
+            <div class="brand-item"><span>GOOGLE</span></div>
+            <div class="brand-item"><span>HUAWEI</span></div>
+            <div class="brand-item"><span>ONEPLUS</span></div>
+            <div class="brand-item"><span>XIAOMI</span></div>
+            <div class="brand-item"><span>OPPO</span></div>
+            <div class="brand-item"><i class="fab fa-apple"></i><span>APPLE</span></div>
+            <div class="brand-item"><span>SAMSUNG</span></div>
+            <div class="brand-item"><span>GOOGLE</span></div>
+            <div class="brand-item"><span>HUAWEI</span></div>
+            <div class="brand-item"><span>ONEPLUS</span></div>
+            <div class="brand-item"><span>XIAOMI</span></div>
+            <div class="brand-item"><span>OPPO</span></div>
         </div>
     </section>
 
+    <!-- FEATURED PRODUCTS SECTION -->
+    <section class="product-section">
+        <div class="section-title-box" style="color:#0c1c3a;">
+            <span class="subtitle">TECH ACCESSORIES</span>
+            <h2>Top Rated Gear</h2>
+        </div>
+        <div class="product-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-img-box">
+                    <div class="wishlist-btn"><i class="fa-regular fa-heart"></i></div>
+                    <img src="https://images.unsplash.com/photo-1603313011101-31c726a55ad4?q=80&w=500" alt="Leather Case">
+                </div>
+                <div class="product-info">
+                    <span class="category">Protection</span>
+                    <h4>Premium Leather Case</h4>
+                    <div class="rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <span>(5.0)</span>
+                    </div>
+                    <div class="price-box">$29.00</div>
+                </div>
+            </div>
 
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-img-box" style="background-color: #e9f3f9;">
+                    <div class="wishlist-btn"><i class="fa-regular fa-heart"></i></div>
+                    <img src="https://images.unsplash.com/photo-1605464315542-bda3e2f4e605?q=80&w=500" alt="Earbuds">
+                </div>
+                <div class="product-info">
+                    <span class="category">Audio</span>
+                    <h4>Wireless Tech Earbuds</h4>
+                    <div class="rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <span>(5.0)</span>
+                    </div>
+                    <div class="price-box">$89.00</div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-img-box">
+                    <div class="wishlist-btn"><i class="fa-regular fa-heart"></i></div>
+                    <div class="discount-badge">-20%</div>
+                    <img src="https://images.unsplash.com/photo-1619143172083-22874403185b?q=80&w=500" alt="Power Bank">
+                </div>
+                <div class="product-info">
+                    <span class="category">Charging</span>
+                    <h4>Fast Charge Power Bank</h4>
+                    <div class="rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <span>(5.0)</span>
+                    </div>
+                    <div class="price-box">
+                        <span class="old-price">$55.00</span> $44.00
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIAL SECTION -->
     <section class="testimonial-section">
-    <div class="testimonial-content">
-        <h2>Trusted By Over 1300 <br> Loyal Clients</h2>
-        <p>Ad litora torquent per conubia nostra inceptos himenaeos. Dis parturient montes nascetur ridiculus mus donec.</p>
-        <a href="#" class="btn-contact">Contact Us &rarr;</a>
-    </div>
+        <div class="testimonial-content">
+            <span class="subtitle" style="color:#FF4D00; font-weight:700; letter-spacing:2px; display:block; margin-bottom:10px;">CLIENT FEEDBACK</span>
+            <h2>Trusted By Over 1300 <br> Happy Customers</h2>
+            <p>They fixed my cracked iPhone screen in 30 minutes. The service was professional and the price was fair. Highly recommend!</p>
+            <a href="#" class="btn-contact">Contact Us &rarr;</a>
+        </div>
 
-    <div class="testimonial-grid">
-        <div class="testimonial-column scroll-down">
-            <div class="card">
-                <span class="quote-icon">❝</span>
-                <p class="card-text">Luctus nibh finibus facilisis dapibus etiam interdum tortor. Tincidunt nam porta elementum.</p>
-                <div class="user-profile">
-                    <img src="https://i.pravatar.cc/150?u=1" alt="User">
-                    <div class="user-info"><h4>Nicole Saskia</h4><span>Founder</span></div>
+        <div class="testimonial-grid">
+            <div class="testimonial-column scroll-down">
+                <div class="card">
+                    <span class="quote-icon">❝</span>
+                    <p class="card-text">My phone was water damaged and I thought I lost everything. They saved my data and the phone!</p>
+                    <div class="user-profile">
+                        <img src="https://i.pravatar.cc/150?u=11" alt="User">
+                        <div class="user-info"><h4>James Miller</h4><span>Business Owner</span></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="quote-icon">❝</span>
+                    <p class="card-text">Best accessory collection in the city. Original Apple chargers at great prices.</p>
+                    <div class="user-profile">
+                        <img src="https://i.pravatar.cc/150?u=12" alt="User">
+                        <div class="user-info"><h4>Sarah Chen</h4><span>Student</span></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <span class="quote-icon">❝</span>
+                    <p class="card-text">Transparent pricing and very fast. No hidden costs for the battery replacement.</p>
+                    <div class="user-profile">
+                        <img src="https://i.pravatar.cc/150?u=11" alt="User">
+                        <div class="user-info"><h4>James Miller</h4><span>Business Owner</span></div>
+                    </div>
                 </div>
             </div>
-            <div class="card">
-                <span class="quote-icon">❝</span>
-                <p class="card-text">Euismod quam justo lectus commodo augue arcu dignissim. Porttitor ullamcorper.</p>
-                <div class="user-profile">
-                    <img src="https://i.pravatar.cc/150?u=2" alt="User">
-                    <div class="user-info"><h4>Kay Ludger</h4><span>Finance Director</span></div>
+
+            <div class="testimonial-column scroll-up">
+                <div class="card">
+                    <span class="quote-icon">❝</span>
+                    <p class="card-text">Professional technicians. They explained the logic board issue very clearly.</p>
+                    <div class="user-profile">
+                        <img src="https://i.pravatar.cc/150?u=13" alt="User">
+                        <div class="user-info"><h4>Lili Alexa</h4><span>Designer</span></div>
+                    </div>
                 </div>
-            </div>
-            <div class="card">
-                <span class="quote-icon">❝</span>
-                <p class="card-text">Luctus nibh finibus facilisis dapibus etiam interdum tortor. Tincidunt nam porta elementum.</p>
-                <div class="user-profile">
-                    <img src="https://i.pravatar.cc/150?u=1" alt="User">
-                    <div class="user-info"><h4>Nicole Saskia</h4><span>Founder</span></div>
+                <div class="card">
+                    <span class="quote-icon">❝</span>
+                    <p class="card-text">Great trade-in value for my old Samsung. Upgraded to a new one instantly.</p>
+                    <div class="user-profile">
+                        <img src="https://i.pravatar.cc/150?u=14" alt="User">
+                        <div class="user-info"><h4>Mario Pascal</h4><span>Developer</span></div>
+                    </div>
                 </div>
-            </div>
-            <div class="card">
-                <span class="quote-icon">❝</span>
-                <p class="card-text">Euismod quam justo lectus commodo augue arcu dignissim. Porttitor ullamcorper.</p>
-                <div class="user-profile">
-                    <img src="https://i.pravatar.cc/150?u=2" alt="User">
-                    <div class="user-info"><h4>Kay Ludger</h4><span>Finance Director</span></div>
+                <div class="card">
+                    <span class="quote-icon">❝</span>
+                    <p class="card-text">Excellent service for screen glass restoration. Saved me hundreds of dollars.</p>
+                    <div class="user-profile">
+                        <img src="https://i.pravatar.cc/150?u=13" alt="User">
+                        <div class="user-info"><h4>Lili Alexa</h4><span>Designer</span></div>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
-        <div class="testimonial-column scroll-up">
-            <div class="card">
-                <span class="quote-icon">❝</span>
-                <p class="card-text">Fermentum odio phasellus non purus est efficitur laoreet. Blandit quis suspendisse.</p>
-                <div class="user-profile">
-                    <img src="https://i.pravatar.cc/150?u=3" alt="User">
-                    <div class="user-info"><h4>Lili Alexa</h4><span>Marketing Director</span></div>
-                </div>
-            </div>
-            <div class="card">
-                <span class="quote-icon">❝</span>
-                <p class="card-text">Porta elementum a enim euismod quam justo lectus. Imperdiet mollis nullam volutpat porttitor.</p>
-                <div class="user-profile">
-                    <img src="https://i.pravatar.cc/150?u=4" alt="User">
-                    <div class="user-info"><h4>Mario Pascal</h4><span>CEO</span></div>
-                </div>
-            </div>
-            <div class="card">
-                <span class="quote-icon">❝</span>
-                <p class="card-text">Fermentum odio phasellus non purus est efficitur laoreet. Blandit quis suspendisse.</p>
-                <div class="user-profile">
-                    <img src="https://i.pravatar.cc/150?u=3" alt="User">
-                    <div class="user-info"><h4>Lili Alexa</h4><span>Marketing Director</span></div>
-                </div>
-            </div>
-            <div class="card">
-                <span class="quote-icon">❝</span>
-                <p class="card-text">Porta elementum a enim euismod quam justo lectus. Imperdiet mollis nullam volutpat porttitor.</p>
-                <div class="user-profile">
-                    <img src="https://i.pravatar.cc/150?u=4" alt="User">
-                    <div class="user-info"><h4>Mario Pascal</h4><span>CEO</span></div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-
+    <!-- CONTACT SECTION -->
     <section class="contact-section">
+        <div class="section-title-box" style="color:#1a1a1a;">
+            <span class="subtitle">SUPPORT CENTER</span>
+            <h2>Book Your Repair</h2>
+        </div>
         <div class="contact-container">
             <div class="contact-info-wrapper">
                 <div class="map-card">
@@ -998,12 +1078,12 @@
                 <div class="info-blue-card">
                     <div class="info-item">
                         <i class="fa-solid fa-envelope-open-text"></i>
-                        <h5>Email:</h5>
-                        <p>info@example.com</p>
+                        <h5>Service Email:</h5>
+                        <p>repair@mobifix.com</p>
                     </div>
                     <div class="info-item">
                         <i class="fa-solid fa-phone-volume"></i>
-                        <h5>Phone Call:</h5>
+                        <h5>Instant Help:</h5>
                         <p>(406) 555-0120</p>
                     </div>
                 </div>
@@ -1014,59 +1094,62 @@
                     <div class="form-grid">
                         <div class="form-group">
                             <label>Full Name*</label>
-                            <input type="text" placeholder="Robot fox">
+                            <input type="text" placeholder="Your Name">
                         </div>
                         <div class="form-group">
                             <label>Email Address*</label>
-                            <input type="email" placeholder="info@example.com">
+                            <input type="email" placeholder="email@address.com">
                         </div>
                         <div class="form-group">
-                            <label>Phone Number*</label>
-                            <input type="text" placeholder="Phone Number*">
+                            <label>Phone Model*</label>
+                            <input type="text" placeholder="e.g. iPhone 15 Pro">
                         </div>
                         <div class="form-group">
-                            <label>Type Of Service*</label>
+                            <label>Repair Type*</label>
                             <select>
-                                <option>Type Of Service</option>
-                                <option>Web Design</option>
-                                <option>Development</option>
+                                <option>Screen Replacement</option>
+                                <option>Battery Change</option>
+                                <option>Water Damage</option>
+                                <option>Software Issue</option>
+                                <option>Other</option>
                             </select>
                         </div>
                         <div class="form-group full-width">
-                            <label>Message*</label>
-                            <textarea placeholder="Type Here..."></textarea>
+                            <label>Issue Description*</label>
+                            <textarea placeholder="Describe what's wrong with your device..."></textarea>
                         </div>
                     </div>
-                    <button type="submit" class="submit-btn">Send Message <i class="fa-solid fa-arrow-right"></i></button>
+                    <button type="submit" class="submit-btn">Book Repair Slot <i class="fa-solid fa-arrow-right"></i></button>
                 </form>
             </div>
         </div>
     </section>
 
+    <!-- FOOTER -->
     <footer>
         <div class="footer-container">
             <div class="footer-col footer-logo-col">
                 <div class="footer-logo">
-                    <i class="fa-solid fa-sparkles"></i> cetro
+                    <i class="fa-solid fa-bolt"></i> MobiFix
                 </div>
-                <p>We work with a passion of taking challenges and creating new ones in advertising sector.</p>
+                <p>We are dedicated to providing the fastest and most reliable mobile device repair services in the city.</p>
             </div>
 
             <div class="footer-col">
                 <ul class="footer-links">
                     <li><a href="#">About Us</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Pricing</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Repair Services</a></li>
+                    <li><a href="#">Accessory Store</a></li>
+                    <li><a href="#">Sell Your Device</a></li>
+                    <li><a href="#">Contact</a></li>
                 </ul>
             </div>
 
             <div class="footer-col">
-                <h4>Working Time</h4>
-                <p class="time-row">Mon - Fri: 9.00am - 5.00pm</p>
+                <h4>Opening Hours</h4>
+                <p class="time-row">Mon - Fri: 9.00am - 8.00pm</p>
                 <p class="time-row">Saturday: 10.00am - 6.00pm</p>
-                <p class="time-row">Sunday Closed</p>
+                <p class="time-row">Sunday: Closed</p>
             </div>
 
             <div class="footer-col">
@@ -1079,20 +1162,20 @@
                 <div class="footer-contact-item">
                     <i class="fa-solid fa-envelope"></i>
                     <div>
-                        <h5>support@example.com</h5>
+                        <h5>support@mobifix.com</h5>
                     </div>
                 </div>
                 <div class="footer-contact-item">
                     <i class="fa-solid fa-location-dot"></i>
                     <div>
-                        <p>5609 E Sprague Ave, Spokane Valley, WA 99212, USA</p>
+                        <p>5609 E Sprague Ave, Tech District, WA 99212, USA</p>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="footer-bottom">
-            © Copyright 2025 Cetro. All rights reserved.
+            © Copyright 2026 MobiFix. All rights reserved.
         </div>
 
         <div class="whatsapp-float">
@@ -1118,11 +1201,22 @@
 
         const mobileBtn = document.getElementById('mobile-btn');
         const navbar = document.getElementById('navbar');
+        const navLinks = document.querySelectorAll('#navbar ul li a');
+
         mobileBtn.addEventListener('click', () => {
             navbar.classList.toggle('active');
             const icon = mobileBtn.querySelector('i');
             icon.classList.toggle('fa-bars');
             icon.classList.toggle('fa-xmark');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navbar.classList.remove('active');
+                const icon = mobileBtn.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-xmark');
+            });
         });
     </script>
 </body>

@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HiTheme | Premium Sneaker Experience</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;900&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+    <style>
+        /* --- GLOBAL & RESET --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html { 
+            font-family: 'Inter', sans-serif; 
+            background-color: #1a1a1a; 
+            color: white; 
+            overflow-x: hidden; 
+            scroll-behavior: smooth;
+        }
+
+        /* --- HEADER NAVIGATION --- */
+        header {
+            position: absolute;
+            top: 0; left: 0; width: 100%;
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 6%;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+        }
+        .logo { font-family: 'Orbitron', sans-serif; font-size: 26px; font-weight: 900; }
+        .logo span:first-child { color: #FF4D00; }
+        
+
+        nav ul { display: flex; list-style: none; gap: 25px; }
+        nav ul li a {
+            text-decoration: none; color: #fff; font-size: 12px;
+            font-weight: 700; text-transform: uppercase; transition: 0.3s;
+        }
+        nav ul li a:hover { color: #FF4D00; }
+
+        .nav-right { display: flex; align-items: center; gap: 20px; font-size: 18px; }
+        .menu-toggle { display: none; cursor: pointer; z-index: 1001; }
+
+        /* --- HERO SLIDER SPLIT EFFECT --- */
+        .swiper { width: 100%; height: 100vh; }
+        .swiper-slide {
+            overflow: hidden;
+            display: flex; justify-content: center; align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .slide-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 1.5s cubic-bezier(0.23, 1, 0.32, 1);
+            z-index: 1;
+        }
+        .slide-bg::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8));
+        }
+
+        .hero-content { 
+            position: relative; 
+            z-index: 2; 
+            padding: 0 20px;
+            transition: all 1s ease-out;
+            transform: translateY(30px);
+            opacity: 0;
+        }
+
+        .swiper-slide-active .hero-content {
+            transform: translateY(0);
+            opacity: 1;
+            transition-delay: 0.5s;
+        }
+
+        .hero-content h3 { font-size: clamp(16px, 3vw, 24px); letter-spacing: 5px; text-transform: uppercase; margin-bottom: 10px; }
+        .hero-content h2 { font-family: 'Orbitron'; color: #FF4D00; font-size: clamp(22px, 5vw, 40px); font-style: italic; }
+        .hero-content h1 { font-family: 'Orbitron'; font-size: clamp(40px, 10vw, 90px); font-weight: 900; line-height: 1; margin-bottom: 30px; }
+        
+        .cta-button {
+            background-color: #fff; color: #1a1a1a; padding: 15px 40px;
+            text-decoration: none; font-weight: 800; border-radius: 50px;
+            text-transform: uppercase; transition: 0.3s; display: inline-block;
+        }
+        .cta-button:hover { background-color: #FF4D00; color: #fff; transform: scale(1.05); }
+
+        /* --- NAVIGATION & PAGINATION --- */
+        .swiper-button-next, .swiper-button-prev {
+            color: #fff !important; 
+            width: 60px !important; 
+            height: 60px !important;
+            background: rgba(255, 255, 255, 0.05); 
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transition: all 0.4s ease !important;
+        }
+        .swiper-button-next::after, .swiper-button-prev::after { font-size: 18px !important; font-weight: 900; }
+        .swiper-button-next:hover, .swiper-button-prev:hover { 
+            background: #FF4D00; 
+            border-color: #FF4D00;
+            transform: scale(1.1);
+        }
+
+        .swiper-pagination-bullets.swiper-pagination-horizontal { bottom: 40px !important; }
+        .swiper-pagination-bullet {
+            width: 30px !important; height: 4px !important; border-radius: 2px !important;
+            background: rgba(255, 255, 255, 0.3) !important; opacity: 1 !important;
+            transition: all 0.4s ease !important;
+        }
+        .swiper-pagination-bullet-active { background: #FF4D00 !important; width: 60px !important; }
+
+        /* --- BRAND SCROLLER --- */
+        .brand-section { background: #fff; padding: 40px 0; overflow: hidden; }
+        .brand-track {
+            display: flex; width: calc(250px * 14);
+            animation: scroll 30s linear infinite; align-items: center;
+        }
+        .brand-item {
+            width: 250px; display: flex; align-items: center; justify-content: center;
+            gap: 15px; font-family: 'Orbitron'; font-size: 20px; color: #444; transition: 0.3s;
+        }
+        .brand-item:hover { color: #FF4D00; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-250px * 7)); } }
+
+        /* --- OUR PROCESS SECTION --- */
+        .process-section {
+            padding: 100px 6%;
+            background-color: #f8f9fa;
+            background-image: linear-gradient(rgba(0,0,0,0.03) 1px, transparent 1px), 
+                              linear-gradient(90deg, rgba(0,0,0,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            color: #333;
+        }
+        .section-intro { text-align: center; margin-bottom: 80px; }
+        .section-intro h2 { font-family: 'Orbitron'; color: #FF4D00; font-size: 32px; margin-bottom: 10px; }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            align-items: start;
+        }
+
+        .process-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+            position: relative;
+            transition: 0.3s ease;
+        }
+        .process-card:hover { transform: translateY(-10px); }
+
+        @media (min-width: 992px) {
+            .stagger-down { transform: translateY(60px); }
+            .stagger-up { transform: translateY(-20px); }
+        }
+
+        .card-img {
+            width: 100%; height: 200px;
+            border-radius: 12px;
+            object-fit: cover;
+            margin-bottom: 25px;
+        }
+
+        .process-card h4 { font-size: 20px; font-weight: 800; margin-bottom: 15px; }
+        .process-card h4 span { color: #FFB400; margin-right: 5px; } 
+        .process-card p { font-size: 14px; color: #666; line-height: 1.6; position: relative; z-index: 2; }
+
+        .watermark {
+            position: absolute; bottom: 10px; right: 20px;
+            font-family: 'Orbitron'; font-size: 100px; font-weight: 900;
+            color: rgba(0, 0, 0, 0.05); line-height: 1; z-index: 1;
+        }
+
+        /* --- CONTACT SECTION STYLES --- */
+        .contact-section {
+            padding: 80px 6%;
+            background-color: #f0f4f8;
+            display: flex;
+            justify-content: center;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 30px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .contact-info-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .map-card {
+            background: white;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            height: 300px;
+            overflow: hidden;
+        }
+        .map-card iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 10px;
+        }
+
+        .info-blue-card {
+            background: #007BFF;
+            color: white;
+            padding: 40px 20px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+        }
+        .info-item i { font-size: 24px; margin-bottom: 15px; display: block; }
+        .info-item h5 { font-size: 18px; margin-bottom: 5px; }
+        .info-item p { font-size: 14px; opacity: 0.9; }
+
+        .contact-form-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            color: #333;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group { display: flex; flex-direction: column; gap: 8px; }
+        .form-group label { font-weight: 700; font-size: 14px; color: #444; }
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 12px 15px;
+            border: 1px solid #e1e8ef;
+            border-radius: 8px;
+            background: #fcfdfe;
+            font-family: 'Inter', sans-serif;
+            outline: none;
+        }
+        .form-group textarea { height: 150px; resize: none; }
+        
+        .full-width { grid-column: span 2; }
+
+        .submit-btn {
+            background: #007BFF;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+        .submit-btn:hover { background: #0056b3; }
+
+        /* --- ABOUT RECRUTE SECTION & HOVER EFFECT --- */
+        .recrute-section {
+            padding: 100px 6%;
+            background-color: white;
+            color: #0c1c3a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .recrute-container {
+            max-width: 1200px;
+            display: flex;
+            gap: 50px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .recrute-images {
+            flex: 1;
+            display: flex;
+            gap: 15px;
+            min-width: 300px;
+            height: 400px;
+        }
+
+        .recrute-img-box {
+            border-radius: 12px;
+            overflow: hidden;
+            flex: 1;
+            height: 100%;
+            transition: flex 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        /* Hover expands to show full size / larger space */
+        .recrute-img-box:hover {
+            flex: 3;
+        }
+
+        .recrute-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .recrute-content {
+            flex: 1.2;
+            min-width: 300px;
+        }
+
+        .recrute-badge {
+            background: #fff0eb;
+            color: #ff5e3a;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .recrute-content h2 {
+            font-size: clamp(32px, 4vw, 48px);
+            line-height: 1.1;
+            margin-bottom: 25px;
+            font-weight: 800;
+        }
+
+        .recrute-content p {
+            color: #6a7181;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+
+        .stats-grid {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .stat-item h3 { font-size: 32px; font-weight: 800; margin-bottom: 5px; }
+        .stat-item span { color: #6a7181; font-size: 14px; }
+
+        .network-btn {
+            background: #ff6a4d;
+            color: white;
+            padding: 18px 35px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+        .network-btn:hover { background: #e55a3d; transform: translateY(-2px); }
+
+        /* --- SCROLL TO TOP BUTTON --- */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: white;
+            color: #0c1c3a;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            z-index: 2000;
+            text-decoration: none;
+            border: 1px solid #eee;
+            transition: 0.3s;
+        }
+        .scroll-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 992px) {
+            .menu-toggle { display: block; }
+            nav {
+                position: fixed; top: 0; right: -100%; width: 80%; height: 100vh;
+                background: #000; display: flex; flex-direction: column;
+                justify-content: center; align-items: center; transition: 0.5s;
+                z-index: 1001;
+            }
+            nav.active { right: 0; }
+            nav ul { flex-direction: column; gap: 35px; }
+            .swiper-button-next, .swiper-button-prev { display: none; }
+            .process-section { padding: 60px 5%; }
+            .stagger-down, .stagger-up { transform: none; }
+            
+            .contact-container { grid-template-columns: 1fr; }
+            .form-grid { grid-template-columns: 1fr; }
+            .full-width { grid-column: span 1; }
+
+            .recrute-images { height: auto; flex-direction: column; }
+            .recrute-img-box { height: 200px; flex: none; width: 100%; }
+            .recrute-img-box:hover { flex: none; transform: scale(1.02); }
+            .stats-grid { flex-wrap: wrap; gap: 20px; }
+        }
+
+        /* --- QUICK AND EASY SECTION STYLES --- */
+        .quick-easy-section {
+            padding: 80px 6%;
+            background-color: #ffffff;
+            color: #000000;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .quick-easy-section .section-header { margin-bottom: 60px; }
+        .quick-easy-section .subtitle {
+            color: #4CAF50;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1.5px;
+            display: block;
+        }
+
+        .quick-easy-section h2 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-top: 10px;
+            color: #000;
+        }
+
+        .steps-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .step-item { flex: 1; min-width: 250px; padding: 20px; position: relative; }
+        .step-circle {
+            width: 180px; height: 180px;
+            background-color: #f1f8f1;
+            border: 1px solid #e0eee0;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .step-circle i { font-size: 55px; color: #4CAF50; }
+        .leaf-decor {
+            position: absolute; top: 10px; right: 25px;
+            color: #4CAF50; font-size: 20px; transform: rotate(15deg);
+        }
+
+        .step-item h4 { font-size: 28px; font-weight: 800; margin-bottom: 15px; color: #000; }
+        .step-item p { color: #666666; font-size: 16px; line-height: 1.6; }
+        .step-arrow { flex: 0 0 50px; margin-top: 85px; font-size: 30px; color: #b0deb1; }
+
+        @media (max-width: 992px) {
+            .step-arrow { display: none; }
+            .step-item { margin-bottom: 40px; }
+        }
+
+        /* --- FOOTER SECTION (NEW) --- */
+        footer {
+            background: linear-gradient(rgba(10, 20, 30, 0.95), rgba(10, 20, 30, 0.95)), url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=2000');
+            background-size: cover;
+            background-position: center;
+            padding: 120px 6% 40px;
+            color: #fff;
+            position: relative;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr 1fr 1fr;
+            gap: 40px;
+        
+        }
+
+        .footer-logo-col .footer-logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 32px;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .footer-logo i { color: #2ecc71; font-size: 24px; }
+
+        .footer-logo-col p {
+            font-size: 15px;
+            line-height: 1.8;
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+
+        .footer-col h4 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links li a {
+            text-decoration: none;
+            color: #fff;
+            opacity: 0.8;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+        .footer-links li a:hover { opacity: 1; color: #2ecc71; padding-left: 5px; }
+
+        .footer-col p.time-row {
+            font-size: 14px;
+            margin-bottom: 10px;
+            opacity: 0.8;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .footer-contact-item i {
+            color: #2ecc71;
+            font-size: 18px;
+            margin-top: 4px;
+        }
+        .footer-contact-item h5 { font-size: 18px; font-weight: 700; margin-bottom: 2px; }
+        .footer-contact-item p { font-size: 14px; opacity: 0.8; }
+        .footer-contact-item.phone h5 { font-size: 22px; color: #2ecc71; }
+
+        .footer-bottom {
+            margin-top: 60px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 14px;
+            opacity: 0.6;
+        }
+
+        .whatsapp-float {
+            position: absolute;
+            right: 40px;
+            bottom: 40px;
+            background: #2ecc71;
+            width: 45px;
+            height: 45px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 992px) {
+            .footer-container { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 600px) {
+            .footer-container { grid-template-columns: 1fr; text-align: center; }
+            .footer-contact-item { justify-content: center; }
+        }
+
+        /* Container Layout */
+.testimonial-section {
+    background-color: #f9fafb;
+    padding: 80px 10%;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+}
+
+.testimonial-content {
+    flex: 1;
+}
+
+.testimonial-content h2 {
+    font-size: 2.5rem;
+    color: #111;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.testimonial-content p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+.btn-contact {
+    background: linear-gradient(90deg, #86efac, #d9f99d);
+    padding: 14px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #111;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Scroll Grid Logic */
+.testimonial-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    height: 600px; 
+    overflow: hidden;
+    position: relative;
+    mask-image: linear-gradient(transparent, black 15%, black 85%, transparent);
+}
+
+.testimonial-column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ANIMATION 1: Top to Bottom (Scroll Down) */
+.scroll-down {
+    animation: topToBottom 25s linear infinite;
+}
+
+@keyframes topToBottom {
+    0% { transform: translateY(-50%); }
+    100% { transform: translateY(0); }
+}
+
+/* ANIMATION 2: Bottom to Top (Scroll Up) */
+.scroll-up {
+    animation: bottomToTop 25s linear infinite;
+}
+
+@keyframes bottomToTop {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-50%); }
+}
+
+/* Pause on hover for better UX */
+.testimonial-grid:hover .testimonial-column {
+    animation-play-state: paused;
+}
+
+/* Card Visual Styles */
+.card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    border: 1px solid #f1f1f1;
+}
+
+.quote-icon {
+    font-size: 30px;
+    color: #111;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.user-profile img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-info h4 {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #111;
+}
+
+.user-info span {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+    </style>
+</head>
+<body>
+
+    <header id="top">
+        <div class="logo"><span>HI</span><span>Theme</span></div>
+        <nav id="navbar">
+            <ul>
+                <li><a href="#top">Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">Promotion</a></li>
+                <li><a href="#">Accessories</a></li>
+                <li><a href="#">Blog</a></li>
+            </ul>
+        </nav>
+        <div class="nav-right">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <div class="menu-toggle" id="mobile-btn"><i class="fa-solid fa-bars"></i></div>
+        </div>
+    </header>
+
+    <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1552346154-21d32810aba3?q=80&w=2000');" data-swiper-parallax="50%"></div>
+                <div class="hero-content">
+                    <h3>Summer Edition</h3>
+                    <h2>Sneakers of</h2>
+                    <h1>The Week</h1>
+                    <a href="#" class="cta-button">View Collection</a>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="slide-bg" style="background-image: url('https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?q=80&w=2000');" data-swiper-parallax="50%"></div>
+                <div class="hero-content">
+                    <h3>Urban Tech</h3>
+                    <h2>New Arrivals</h2>
+                    <h1>Streetwear</h1>
+                    <a href="#" class="cta-button">Shop Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </div>
+
+    <section class="recrute-section">
+        <div class="recrute-container">
+            <div class="recrute-images">
+                <div class="recrute-img-box"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800" alt="Finance Professional"></div>
+                <div class="recrute-img-box"><img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=800" alt="Business Meeting"></div>
+                <div class="recrute-img-box"><img src="https://images.unsplash.com/photo-1540966466591-6458139cf13f?q=80&w=800" alt="Delivery Logistics"></div>
+            </div>
+            
+            <div class="recrute-content">
+                <div class="recrute-badge">
+                    <i class="fa-solid fa-house-laptop"></i> ABOUT RECRUTE
+                </div>
+                <h2>Driving Success With A Expert Finance Staffing</h2>
+                <p>Our team of industry experts is dedicated to understanding your unique needs and delivering tailored solutions that propel your business forward.</p>
+                
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <h3>1K+</h3>
+                        <span>Expert Team</span>
+                    </div>
+                    <div class="stat-item">
+                        <h3>98%</h3>
+                        <span>Client Satisfaction</span>
+                    </div>
+                    <div class="stat-item">
+                        <h3>99%</h3>
+                        <span>Success Rate</span>
+                    </div>
+                </div>
+                
+                <a href="#" class="network-btn">JOIN OUR NETWORK <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="quick-easy-section">
+        <div class="section-header">
+            <span class="subtitle">HOW IT WORKS</span>
+            <h2>Quick and Easy</h2>
+        </div>
+        <div class="steps-container">
+            <div class="step-item">
+                <div class="step-circle">
+                    <i class="fa-regular fa-calendar-check"></i>
+                    <div class="leaf-decor"><i class="fa-solid fa-leaf"></i></div>
+                </div>
+                <h4>Free Quote</h4>
+                <p>Tell us about your home and choose the date you want.</p>
+            </div>
+
+            <div class="step-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
+
+            <div class="step-item">
+                <div class="step-circle">
+                    <i class="fa-solid fa-hand-sparkles"></i>
+                    <div class="leaf-decor"><i class="fa-solid fa-leaf"></i></div>
+                </div>
+                <h4>Clean</h4>
+                <p>Our seasoned team of full-time cleaners will transform your home.</p>
+            </div>
+
+            <div class="step-arrow"><i class="fa-solid fa-arrow-right-long"></i></div>
+
+            <div class="step-item">
+                <div class="step-circle">
+                    <i class="fa-regular fa-face-smile-beam"></i>
+                    <div class="leaf-decor"><i class="fa-solid fa-leaf"></i></div>
+                </div>
+                <h4>Relax</h4>
+                <p>Sit back and enjoy how amazing your home or business looks now.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="process-section">
+        <div class="section-intro">
+            <h2>Our Process</h2>
+            <p>We've been working hard to impress you.</p>
+        </div>
+        <div class="process-grid">
+            <div class="process-card stagger-up">
+                <img src="https://images.unsplash.com/photo-1542621334-a254cf47733d?q=80&w=800" class="card-img" alt="Consultation">
+                <h4><span>01.</span> Initial Consultation</h4>
+                <p>We begin by understanding your vision, goals, and needs, followed by a roadmap.</p>
+                <div class="watermark">01</div>
+            </div>
+            <div class="process-card stagger-down">
+                <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=800" class="card-img" alt="Design">
+                <h4><span>02.</span> Design & Planning</h4>
+                <p>Our team creates detailed designs that reflect your specific requirements and style.</p>
+                <div class="watermark">02</div>
+            </div>
+            <div class="process-card stagger-up">
+                <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=800" class="card-img" alt="Implementation">
+                <h4><span>03.</span> Implementation</h4>
+                <p>With carefully selected contractors, we manage every phase of the project with precision.</p>
+                <div class="watermark">03</div>
+            </div>
+            <div class="process-card stagger-down">
+                <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=800" class="card-img" alt="Handover">
+                <h4><span>04.</span> Project Handover</h4>
+                <p>Upon completion, we conduct a thorough review, making sure every detail is flawless.</p>
+                <div class="watermark">04</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="brand-section">
+        <div class="brand-track">
+            <div class="brand-item"><i class="fab fa-nike"></i><span>NIKE</span></div>
+            <div class="brand-item"><i class="fab fa-adidas"></i><span>ADIDAS</span></div>
+            <div class="brand-item"><span>PUMA</span></div>
+            <div class="brand-item"><span>REEBOK</span></div>
+            <div class="brand-item"><span>ASICS</span></div>
+            <div class="brand-item"><span>JORDAN</span></div>
+            <div class="brand-item"><span>VANS</span></div>
+            <div class="brand-item"><i class="fab fa-nike"></i><span>NIKE</span></div>
+            <div class="brand-item"><i class="fab fa-adidas"></i><span>ADIDAS</span></div>
+            <div class="brand-item"><span>PUMA</span></div>
+            <div class="brand-item"><span>REEBOK</span></div>
+            <div class="brand-item"><span>ASICS</span></div>
+            <div class="brand-item"><span>JORDAN</span></div>
+            <div class="brand-item"><span>VANS</span></div>
+        </div>
+    </section>
+
+
+    <section class="testimonial-section">
+    <div class="testimonial-content">
+        <h2>Trusted By Over 1300 <br> Loyal Clients</h2>
+        <p>Ad litora torquent per conubia nostra inceptos himenaeos. Dis parturient montes nascetur ridiculus mus donec.</p>
+        <a href="#" class="btn-contact">Contact Us &rarr;</a>
+    </div>
+
+    <div class="testimonial-grid">
+        <div class="testimonial-column scroll-down">
+            <div class="card">
+                <span class="quote-icon">❝</span>
+                <p class="card-text">Luctus nibh finibus facilisis dapibus etiam interdum tortor. Tincidunt nam porta elementum.</p>
+                <div class="user-profile">
+                    <img src="https://i.pravatar.cc/150?u=1" alt="User">
+                    <div class="user-info"><h4>Nicole Saskia</h4><span>Founder</span></div>
+                </div>
+            </div>
+            <div class="card">
+                <span class="quote-icon">❝</span>
+                <p class="card-text">Euismod quam justo lectus commodo augue arcu dignissim. Porttitor ullamcorper.</p>
+                <div class="user-profile">
+                    <img src="https://i.pravatar.cc/150?u=2" alt="User">
+                    <div class="user-info"><h4>Kay Ludger</h4><span>Finance Director</span></div>
+                </div>
+            </div>
+            <div class="card">
+                <span class="quote-icon">❝</span>
+                <p class="card-text">Luctus nibh finibus facilisis dapibus etiam interdum tortor. Tincidunt nam porta elementum.</p>
+                <div class="user-profile">
+                    <img src="https://i.pravatar.cc/150?u=1" alt="User">
+                    <div class="user-info"><h4>Nicole Saskia</h4><span>Founder</span></div>
+                </div>
+            </div>
+            <div class="card">
+                <span class="quote-icon">❝</span>
+                <p class="card-text">Euismod quam justo lectus commodo augue arcu dignissim. Porttitor ullamcorper.</p>
+                <div class="user-profile">
+                    <img src="https://i.pravatar.cc/150?u=2" alt="User">
+                    <div class="user-info"><h4>Kay Ludger</h4><span>Finance Director</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="testimonial-column scroll-up">
+            <div class="card">
+                <span class="quote-icon">❝</span>
+                <p class="card-text">Fermentum odio phasellus non purus est efficitur laoreet. Blandit quis suspendisse.</p>
+                <div class="user-profile">
+                    <img src="https://i.pravatar.cc/150?u=3" alt="User">
+                    <div class="user-info"><h4>Lili Alexa</h4><span>Marketing Director</span></div>
+                </div>
+            </div>
+            <div class="card">
+                <span class="quote-icon">❝</span>
+                <p class="card-text">Porta elementum a enim euismod quam justo lectus. Imperdiet mollis nullam volutpat porttitor.</p>
+                <div class="user-profile">
+                    <img src="https://i.pravatar.cc/150?u=4" alt="User">
+                    <div class="user-info"><h4>Mario Pascal</h4><span>CEO</span></div>
+                </div>
+            </div>
+            <div class="card">
+                <span class="quote-icon">❝</span>
+                <p class="card-text">Fermentum odio phasellus non purus est efficitur laoreet. Blandit quis suspendisse.</p>
+                <div class="user-profile">
+                    <img src="https://i.pravatar.cc/150?u=3" alt="User">
+                    <div class="user-info"><h4>Lili Alexa</h4><span>Marketing Director</span></div>
+                </div>
+            </div>
+            <div class="card">
+                <span class="quote-icon">❝</span>
+                <p class="card-text">Porta elementum a enim euismod quam justo lectus. Imperdiet mollis nullam volutpat porttitor.</p>
+                <div class="user-profile">
+                    <img src="https://i.pravatar.cc/150?u=4" alt="User">
+                    <div class="user-info"><h4>Mario Pascal</h4><span>CEO</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <section class="contact-section">
+        <div class="contact-container">
+            <div class="contact-info-wrapper">
+                <div class="map-card">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d107593.59914441544!2d-117.406981!3d47.658780!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x549e185c30dd74fd%3A0x2cf8daaa42a44c34!2sSpokane%2C%20WA!5e0!3m2!1sen!2sus!4v1614131234567!5m2!1sen!2sus" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+                <div class="info-blue-card">
+                    <div class="info-item">
+                        <i class="fa-solid fa-envelope-open-text"></i>
+                        <h5>Email:</h5>
+                        <p>info@example.com</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-phone-volume"></i>
+                        <h5>Phone Call:</h5>
+                        <p>(406) 555-0120</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-form-card">
+                <form>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Full Name*</label>
+                            <input type="text" placeholder="Robot fox">
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address*</label>
+                            <input type="email" placeholder="info@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone Number*</label>
+                            <input type="text" placeholder="Phone Number*">
+                        </div>
+                        <div class="form-group">
+                            <label>Type Of Service*</label>
+                            <select>
+                                <option>Type Of Service</option>
+                                <option>Web Design</option>
+                                <option>Development</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Message*</label>
+                            <textarea placeholder="Type Here..."></textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message <i class="fa-solid fa-arrow-right"></i></button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col footer-logo-col">
+                <div class="footer-logo">
+                    <i class="fa-solid fa-sparkles"></i> cetro
+                </div>
+                <p>We work with a passion of taking challenges and creating new ones in advertising sector.</p>
+            </div>
+
+            <div class="footer-col">
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Working Time</h4>
+                <p class="time-row">Mon - Fri: 9.00am - 5.00pm</p>
+                <p class="time-row">Saturday: 10.00am - 6.00pm</p>
+                <p class="time-row">Sunday Closed</p>
+            </div>
+
+            <div class="footer-col">
+                <div class="footer-contact-item phone">
+                    <i class="fa-solid fa-phone"></i>
+                    <div>
+                        <h5>+(084) 456-0789</h5>
+                    </div>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div>
+                        <h5>support@example.com</h5>
+                    </div>
+                </div>
+                <div class="footer-contact-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <p>5609 E Sprague Ave, Spokane Valley, WA 99212, USA</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            © Copyright 2025 Cetro. All rights reserved.
+        </div>
+
+        <div class="whatsapp-float">
+            <i class="fa-solid fa-arrow-up"></i>
+        </div>
+    </footer>
+
+    <a href="#top" class="scroll-top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        const swiper = new Swiper(".mySwiper", {
+            loop: true,
+            speed: 1000,
+            parallax: true,
+            autoplay: { delay: 5000, disableOnInteraction: false },
+            navigation: { nextEl: ".swiper-button-next", prevEl: ".swiper-button-prev" },
+            pagination: { el: ".swiper-pagination", clickable: true },
+            watchSlidesProgress: true,
+        });
+
+        const mobileBtn = document.getElementById('mobile-btn');
+        const navbar = document.getElementById('navbar');
+        mobileBtn.addEventListener('click', () => {
+            navbar.classList.toggle('active');
+            const icon = mobileBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-xmark');
+        });
+    </script>
+</body>
+</html>
